@@ -1,0 +1,82 @@
+.login {
+    padding: 45px 30px;
+    height: calc(100vh - 93px);
+}
+
+.loginCnt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 25px;
+    height: 100%;
+}
+
+.loginFormCnt {
+    width: 100%;
+}
+
+.loginInput {
+    background-color: $color-bg-purple !important;
+    border: 2px solid transparent;
+    width: 90%;
+    padding: 15px;
+    border-radius: 30px;
+
+    &:hover {
+        border-color: $color-primary;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+}
+
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.strokeButton {
+    background-color: white;
+    border: 3px solid $color-primary;
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.strokeButton:hover {
+    background-color: $color-primary;
+    color: white;
+}
+
+.loginTextCnt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    font-size: 14px;
+}
+
+.loginTextAccount {
+    font-weight: 700;
+    text-decoration: none;
+    color: $color-text;
+}
+
+.accountTextAccount {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.errorText {
+    color: #EF798A
+}
