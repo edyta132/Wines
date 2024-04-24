@@ -18,7 +18,7 @@
 }
 
 .loginInput {
-    background-color: $color-bg-purple;
+    background-color: $color-bg-purple !important;
     border: 2px solid transparent;
     width: 90%;
     padding: 15px;
@@ -31,6 +31,7 @@
     &:focus {
         outline: none;
     }
+
 }
 
 

@@ -14,6 +14,7 @@ export const Register = () => {
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors }
     } = useForm<FormFields>()
 
@@ -65,10 +66,10 @@ export const Register = () => {
                     <input {...register("repeatPassword", {
                         required: "This field can't be empty",
                         validate: (value) => {
-                            if (value !== "password") {
+                            if (value !== watch("password")) {
                                 return "The passwords don't match"
                             }
-                            return true
+                            // return true
                         }
 
                     })}
