@@ -50,12 +50,13 @@
     padding: 15px;
     border-radius: 30px;
     font-size: 16px;
+
+    &:hover {
+        background-color: $color-primary;
+        color: white;
+    }
 }
 
-.strokeButton:hover {
-    background-color: $color-primary;
-    color: white;
-}
 
 .loginTextCnt {
     display: flex;

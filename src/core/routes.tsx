@@ -4,6 +4,6 @@ import { MainPage } from "../pages/MainPage/MainPage";
 
 export const routes = [
     { path: '/login', element: <Login /> },
-    { path: '/account', element: <Register /> },
+    { path: '/register', element: <Register /> },
     { path: '/', element: <MainPage /> }
 ] as const

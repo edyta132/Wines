@@ -1,7 +1,10 @@
 import styles from './Login.module.scss'
 import Logo from '../../assets/Logo.svg?react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../core/services/firebase'
+
 
 type FormFields = {
     email: string;
@@ -16,9 +19,23 @@ export const Login = () => {
         handleSubmit,
         formState: { errors }
     } = useForm<FormFields>()
+    const navigate = useNavigate();
 
     const onSubmit = (data: FormFields) => {
         console.log(data)
+        signInWithEmailAndPassword(auth, data.email, data.password)
+            .then(() => {
+                console.log('User zalogowany')
+                navigate('/')
+                // Signed in 
+                // const user = userCredential.user;
+                // ...
+            })
+            .catch(() => {
+                console.log('User niezalogowany')
+                // const errorCode = error.code;
+                // const errorMessage = error.message;
+            });
     }
 
     return (
@@ -59,7 +76,7 @@ export const Login = () => {
 
                 <div className={styles.loginTextCnt}>
                     <p className={styles.loginTextPassword}>I don't remember password</p>
-                    <Link to="/account" className={styles.loginTextAccount}>Creat a new account</Link>
+                    <Link to="/register" className={styles.loginTextAccount}>Creat a new account</Link>
                 </div>
             </div>
         </div>

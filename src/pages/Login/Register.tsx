@@ -1,10 +1,13 @@
 import styles from './Login.module.scss'
 import Logo from '../../assets/Logo.svg?react'
 import { useForm } from 'react-hook-form'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { auth } from '../../core/services/firebase'
+import { useNavigate } from "react-router-dom";
 
 
 type FormFields = {
-    fullName: string,
+    name: string,
     email: string,
     password: string,
     repeatPassword: string
@@ -17,9 +20,30 @@ export const Register = () => {
         watch,
         formState: { errors }
     } = useForm<FormFields>()
+    const navigate = useNavigate();
+
 
     const onSubmit = (data: FormFields) => {
         console.log(data)
+        createUserWithEmailAndPassword(auth, data.email, data.password)
+            .then(() => {
+                // Signed up 
+                // const user = userCredential.user;
+                if (auth.currentUser) {
+                    updateProfile(auth.currentUser, {
+                        displayName: data.name
+                    })
+
+                }
+                navigate('/')
+
+            })
+        // .catch((error) => {
+        //     const errorCode = error.code;
+        //     const errorMessage = error.message;
+        //     // ..
+        // });
+
     }
 
 
@@ -29,14 +53,14 @@ export const Register = () => {
                 <div><Logo /></div>
                 <p className={styles.accountTextAccount}>Creat a new account</p>
                 <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("fullName", {
+                    <input {...register("name", {
                         required: "This field can't be empty",
                     })}
                         className={styles.loginInput}
                         type="text"
-                        placeholder="Full name">
+                        placeholder="Name">
                     </input>
-                    {errors.fullName && <div className={styles.errorText}>{errors.fullName.message}</div>}
+                    {errors.name && <div className={styles.errorText}>{errors.name.message}</div>}
                     <input {...register("email", {
                         required: "This field can't be empty",
                         validate: (value) => {
@@ -69,7 +93,6 @@ export const Register = () => {
                             if (value !== watch("password")) {
                                 return "The passwords don't match"
                             }
-                            // return true
                         }
 
                     })}
