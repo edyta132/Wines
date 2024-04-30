@@ -1,8 +1,11 @@
-import { auth } from "../../core/services/firebase"
+import { useContext } from "react"
+
+import { AppContext } from "../../App"
 
 export const MainPage = () => {
-    console.log(auth.currentUser?.displayName)
+    const { user } = useContext(AppContext)
+    console.log(user?.displayName)
     return (
         <div> main page</div>
     )
-}
+} 
