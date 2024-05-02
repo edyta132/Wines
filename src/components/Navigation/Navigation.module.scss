@@ -1,0 +1,18 @@
+.navigation {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.navigationCnt {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $color-bg-purple;
+}
+
+.plus {
+    border: 10px solid white;
+    border-radius: 50%;
+    align-self: flex-end;
+}

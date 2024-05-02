@@ -1,0 +1,53 @@
+.mainPage {
+    position: relative;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    padding-top: 40px;
+    gap: 40px;
+}
+
+.mainTitle {
+    font-size: 24px;
+    color: $color-text;
+    font-weight: 700;
+}
+
+.serach {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-bg-ligth;
+    padding: 20px 23px;
+    border-radius: 30px;
+}
+
+.categoryCnt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.categorySingleWine {
+    width: 140px;
+    height: 180px;
+    // padding: 30px 47px;
+    background-color: $color-bg-ligth;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.subTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-primary;
+
+}
