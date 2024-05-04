@@ -2,13 +2,12 @@ import { useContext } from "react"
 import styles from "./MainPage.module.scss"
 import { AppContext } from "../../App"
 import { Navigation } from "../../components/Navigation/Navigation"
-import Serach from '../../assets/search.svg?react'
 import Red from '../../assets/red.png'
 import White from '../../assets/white.png'
 import Rose from '../../assets/rose.png'
 import Sparkling from '../../assets/sparkling.png'
 import { Link } from "react-router-dom"
-
+import { Search } from "../../components/Search/Search"
 
 export const MainPage = () => {
     const { user } = useContext(AppContext)
@@ -17,9 +16,8 @@ export const MainPage = () => {
         <div className={styles.mainPage}>
             <div className={styles.mainContainer}>
                 <h1 className={styles.mainTitle}>Welcome!</h1>
-                <div className={styles.serach}>
-                    <h3>Search</h3>
-                    <div><Serach /></div>
+                <div>
+                    <Search />
                 </div>
                 <div className={styles.categoryCnt}>
                     <Link to='/category' className={styles.categorySingleWine}>
