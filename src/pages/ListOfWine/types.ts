@@ -1,4 +1,4 @@
-export type WineListItem = {
+export type WineListItemType = {
     name: string;
     categories: string[];
     rating: number;
