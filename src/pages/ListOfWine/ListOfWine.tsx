@@ -4,55 +4,16 @@ import { Link } from "react-router-dom"
 import Arrow from "../../assets/arrow_left.svg?react"
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../core/services/firebase"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 // import { api } from "../../core/api/api";
 // import { WineListItem } from "./types";
 // import { WineListItem } from "../../components/WineListItem/WineListItem";
 import { WineListItemType } from "./types";
 import { WineListContainer } from "../../components/WineListContainer/WineListContainer";
-
-// console.log(api)
+import { AppContext } from "../../App";
 
 export const ListOfWine = () => {
-    const [winesList, setWineList] = useState<WineListItemType[]>([])
-
-    const winesCollectionRef = collection(db, "wines")
-
-    useEffect(() => {
-        const getWinesList = async () => {
-            try {
-                const data = await getDocs(winesCollectionRef);
-                const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-                // console.log(filteredData)
-                setWineList(filteredData)
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
-        getWinesList()
-
-    }, [])
-
-    // console.log(winesCollectionRef)
-    // console.log(winesList)
-    // useEffect(() => {
-    //     const sendData = async (el: WineListItem) => {
-    //         try {
-    //             await setDoc(doc(winesCollectionRef, `${el.id}`), el);
-    //             console.log('poszlo')
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }
-    //     // api.forEach(item => {
-    //     //     sendData(item)
-    //     // })
-    //     // sendData()
-    // }, [])
-
-    const redWine = winesList.filter((el) => el.categories.includes("red")).filter((el) => el.categories.includes("sweet"))
-    // console.log(redWine)
+    const { wines } = useContext(AppContext)
 
     return (
         <div>
@@ -61,12 +22,7 @@ export const ListOfWine = () => {
                     <Link to="/category"><Arrow /></Link>
                     {/* <div><Filter /></div> */}
                 </div>
-                {/* <div>
-                    <h1 className={styles.title}>Red</h1>
-                    <h2 className={styles.subtitle}>sweet</h2>
-                </div>
-                <ul>{redWine.map((item, id) => <li className={styles.list} key={id}><WineListItem name={item.name} categories={item.categories} image={item.image} rating={item.rating} /></li>)}</ul> */}
-                <WineListContainer title="Red" winesList={winesList} color="red" taste="sweet" />
+                <WineListContainer title="Red" winesList={wines} color="red" taste="sweet" />
             </div>
             <div><Navigation /></div>
         </div>

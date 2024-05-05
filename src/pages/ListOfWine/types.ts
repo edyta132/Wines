@@ -6,4 +6,5 @@ export type WineListItemType = {
     country: string;
     image: string;
     id: number;
+    docId: string;
 }
