@@ -34,7 +34,7 @@ export const ListOfWine = () => {
     }, [])
 
     // console.log(winesCollectionRef)
-    console.log(winesList)
+    // console.log(winesList)
     // useEffect(() => {
     //     const sendData = async (el: WineListItem) => {
     //         try {
@@ -49,6 +49,12 @@ export const ListOfWine = () => {
     //     // })
     //     // sendData()
     // }, [])
+
+    const redWine = winesList.filter((el) => el.categories.includes("red"))
+    console.log(redWine);
+    const redSweetWine = redWine.filter((el) => el.categories.includes("sweet"))
+    console.log(redSweetWine)
+
     return (
         <div>
             <div className={styles.container}>
@@ -58,7 +64,7 @@ export const ListOfWine = () => {
                 </div>
                 <h1 className={styles.title}>Tytuł</h1>
                 <h2 className={styles.subtitle}>Subtytuł</h2>
-                <ul>{winesList.map((item, id) => <li className={styles.list} key={id}><WineListItem name={item.name} categories={item.categories} image={item.image} rating={item.rating} /></li>)}</ul>
+                <ul>{redSweetWine.map((item, id) => <li className={styles.list} key={id}><WineListItem name={item.name} categories={item.categories} image={item.image} rating={item.rating} /></li>)}</ul>
             </div>
             <div><Navigation /></div>
         </div>
