@@ -2,14 +2,14 @@ import styles from "./ListOfWine.module.scss"
 import { Navigation } from "../../components/Navigation/Navigation"
 import { Link } from "react-router-dom"
 import Arrow from "../../assets/arrow_left.svg?react"
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../../core/services/firebase"
 import { useEffect, useState } from "react"
 // import { api } from "../../core/api/api";
 // import { WineListItem } from "./types";
-// import { WineListItem } from "../../components/WineListItem/WineListItem";
+import { WineListItem } from "../../components/WineListItem/WineListItem";
 import { WineListItemType } from "./types";
-import { WineListContainer } from "../../components/WineListContainer/WineListContainer";
+import { WineListContainer } from "../../components/WineListContainer/wineListContainer";
 
 // console.log(api)
 
@@ -51,8 +51,10 @@ export const ListOfWine = () => {
     //     // sendData()
     // }, [])
 
-    const redWine = winesList.filter((el) => el.categories.includes("red")).filter((el) => el.categories.includes("sweet"))
-    // console.log(redWine)
+    const redWine = winesList.filter((el) => el.categories.includes("red"))
+    console.log(redWine);
+    const redSweetWine = redWine.filter((el) => el.categories.includes("sweet"))
+    console.log(redSweetWine)
 
     return (
         <div>
@@ -61,12 +63,10 @@ export const ListOfWine = () => {
                     <Link to="/category"><Arrow /></Link>
                     {/* <div><Filter /></div> */}
                 </div>
-                {/* <div>
-                    <h1 className={styles.title}>Red</h1>
-                    <h2 className={styles.subtitle}>sweet</h2>
-                </div>
-                <ul>{redWine.map((item, id) => <li className={styles.list} key={id}><WineListItem name={item.name} categories={item.categories} image={item.image} rating={item.rating} /></li>)}</ul> */}
-                <WineListContainer title="Red" winesList={winesList} color="red" taste="sweet" />
+                <h1 className={styles.title}>Tytuł</h1>
+                <h2 className={styles.subtitle}>Subtytuł</h2>
+                <ul>{redSweetWine.map((item, id) => <li className={styles.list} key={id}><WineListItem name={item.name} categories={item.categories} image={item.image} rating={item.rating} /></li>)}</ul>
+                {/* <WineListContainer arr={winesList} /> */}
             </div>
             <div><Navigation /></div>
         </div>
