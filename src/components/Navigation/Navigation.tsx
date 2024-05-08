@@ -8,14 +8,17 @@ import styles from './Navigation.module.scss'
 
 export const Navigation = () => {
     return (
-        <div className={styles.navigation}>
-            <div className={styles.navigationCnt}>
-                <div><Home /></div>
-                <div><Favourite /></div>
-                <div className={styles.plus}><Plus /></div>
-                <div><Saved /></div>
-                <div><Profil /></div>
+        <>
+            <div className={styles.navigation}>
+                <div className={styles.navigationCnt}>
+                    <div><Home /></div>
+                    <div><Favourite /></div>
+                    <div className={styles.plus}><Plus /></div>
+                    <div><Saved /></div>
+                    <div><Profil /></div>
+                </div>
             </div>
-        </div>
+            <div className={styles.placeholder}></div>
+        </>
     )
 }

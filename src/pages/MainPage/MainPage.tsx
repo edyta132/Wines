@@ -20,19 +20,19 @@ export const MainPage = () => {
                     <Search />
                 </div>
                 <div className={styles.categoryCnt}>
-                    <Link to='/category' className={styles.categorySingleWine}>
+                    <Link to='/category?selectedCat=red' className={styles.categorySingleWine}>
                         <img src={Red} />
                         <h2 className={styles.subTitle}>Red</h2>
                     </Link>
-                    <Link to='/category' className={styles.categorySingleWine}>
+                    <Link to='/category?selectedCat=white' className={styles.categorySingleWine}>
                         <img src={White} />
                         <h2 className={styles.subTitle}>White</h2>
                     </Link>
-                    <Link to='/category' className={styles.categorySingleWine}>
+                    <Link to='/category?selectedCat=rose' className={styles.categorySingleWine}>
                         <img src={Rose} />
                         <h2 className={styles.subTitle}>Rose</h2>
                     </Link>
-                    <Link to='/category' className={styles.categorySingleWine}>
+                    <Link to='/sparkling' className={styles.categorySingleWine}>
                         <img src={Sparkling} />
                         <h2 className={styles.subTitle}>Sparkling</h2>
                     </Link>

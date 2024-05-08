@@ -1,0 +1,48 @@
+.mainCnt {
+    padding: 30px 20px;
+    background-color: $color-bg-ligth;
+    border-radius: 30px;
+
+}
+
+.itemCnt {
+    display: flex;
+    background-color: $color-bg-ligth;
+    padding-right: 15px;
+    gap: 15px;
+    // align-items: center;
+    justify-content: space-between;
+}
+
+.iconsCnt {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.titleCnt {
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+.subtitle {
+    font-size: 12px;
+}
+
+.itemPhotoCnt {
+    padding: 10px;
+    position: relative;
+
+}
+
+.itemPhoto {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

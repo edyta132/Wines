@@ -1,4 +1,4 @@
-export type WineListItem = {
+export type WineListItemType = {
     name: string;
     categories: string[];
     rating: number;
@@ -6,4 +6,5 @@ export type WineListItem = {
     country: string;
     image: string;
     id: number;
+    docId: string;
 }
