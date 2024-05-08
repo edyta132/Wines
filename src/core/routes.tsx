@@ -16,6 +16,7 @@ import { RoseSemiDry } from "../pages/FilterList/RoseSemiDry";
 import { RoseSemiSweet } from "../pages/FilterList/RoseSemiSweet";
 import { RoseSweet } from "../pages/FilterList/RoseSweet";
 import { Sparkling } from "../pages/FilterList/Sparkling";
+import { WineDescription } from "../pages/WineDescription/WineDescription";
 
 
 export const routes = [
@@ -37,5 +38,5 @@ export const routes = [
     { path: '/rose-semi-sweet', element: <RoseSemiSweet /> },
     { path: '/rose-sweet', element: <RoseSweet /> },
     { path: '/sparkling', element: <Sparkling /> },
-
+    { path: '/wine-description', element: <WineDescription /> },
 ] as const

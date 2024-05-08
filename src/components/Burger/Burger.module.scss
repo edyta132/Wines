@@ -56,7 +56,7 @@
     background-color: white;
     left: 0;
     padding-left: 30px;
-    padding-bottom: 500px;
+    height: 100%;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -65,10 +65,20 @@
 
 .navTitle {
     font-weight: bold;
+    text-decoration: none;
+    color: $color-text;
+
 }
 
-.navTasteList {}
+.navTasteList {
+
+    display: flex;
+    flex-direction: column;
+}
 
 .navTasteTitle {
     padding-bottom: 20px;
+    text-decoration: none;
+    color: $color-text;
+
 }
