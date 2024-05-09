@@ -4,7 +4,11 @@
     padding: 30px;
     padding-top: 40px;
     gap: 40px;
+    background-color: $color-bg-purple;
+    padding-bottom: 225px;
 }
+
+.topCnt {}
 
 .iconsCnt {
     display: flex;
@@ -13,4 +17,40 @@
     justify-content: center;
     width: 30px;
 
+}
+
+.descriptionCnt {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 60px 30px;
+}
+
+.descriptionRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.descriptionCol {
+    line-height: 20px;
+}
+
+.descriptionTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: $color-primary;
+    margin-bottom: 10px;
+    line-height: 32px;
+}
+
+.wineImage {
+    width: 95px;
+    height: auto;
+    position: absolute;
+    top: 12%;
+    left: 36%;
+    transform: translate(-50% -50%);
 }
