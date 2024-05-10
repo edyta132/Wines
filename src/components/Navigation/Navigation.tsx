@@ -12,9 +12,9 @@ export const Navigation = () => {
             <div className={styles.navigation}>
                 <div className={styles.navigationCnt}>
                     <div><Home /></div>
-                    <div><Favourite /></div>
+                    <div><Favourite className={styles.heart} /></div>
                     <div className={styles.plus}><Plus /></div>
-                    <div><Saved /></div>
+                    <div><Saved className={styles.saved} /></div>
                     <div><Profil /></div>
                 </div>
             </div>

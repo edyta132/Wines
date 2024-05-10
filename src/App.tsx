@@ -5,6 +5,7 @@ import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from './core/services/firebase';
 import { WineListItemType } from './pages/ListOfWine/types';
+import { WineDescription } from './pages/WineDescription/WineDescription';
 
 type AppContextParams = {
   user: null | User,
@@ -51,6 +52,8 @@ function App() {
         {routes.map((route, idx) => (
           <Route key={idx} path={route.path} element={route.element} />
         ))}
+        <Route path="/wine-description/:id" element={<WineDescription />}></Route>
+
       </Routes>
     </AppContext.Provider>
   )

@@ -1,37 +1,6 @@
 import styles from "./Burger.module.scss"
 
-// export const Burger = () => {
-//     return (
-//         <div className={styles.menuCnt}>
-//             <button className={styles.burgerCnt}>
-//                 <span className={styles.burgerLine}></span>
-//                 <span className={styles.burgerLine}></span>
-//                 <span className={styles.burgerLine}></span>
-//             </button>
-//             <div className={styles.menuItemsCnt}>
-//                 <p className={styles.menuItems}>Red
-//                     <li className={styles.menuItem}>Dry</li>
-//                     <li className={styles.menuItem}>Semi-Dry</li>
-//                     <li className={styles.menuItem}>Semi-Sweet</li>
-//                     <li className={styles.menuItem}>Sweet</li>
-//                 </p>
-//                 <p className={styles.menuItems}>White
-//                     <li className={styles.menuItem}>Dry</li>
-//                     <li className={styles.menuItem}>Semi-Dry</li>
-//                     <li className={styles.menuItem}>Semi-Sweet</li>
-//                     <li className={styles.menuItem}>Sweet</li>
-//                 </p>
-//                 <p className={styles.menuItems}>Rose
-//                     <li className={styles.menuItem}>Dry</li>
-//                     <li className={styles.menuItem}>Semi-Dry</li>
-//                     <li className={styles.menuItem}>Semi-Sweet</li>
-//                     <li className={styles.menuItem}>Sweet</li>
-//                 </p>
-//                 <p className={styles.menuItems}>Sparkling</p>
-//             </div>
-//         </div>
-//     )
-// }
+
 export const Burger = ({ isOpen }) => {
     return (
         <div className={styles.burger}>

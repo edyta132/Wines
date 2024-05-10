@@ -2,19 +2,40 @@ import { Link } from 'react-router-dom'
 import { Navigation } from '../../components/Navigation/Navigation'
 import styles from './WineDescription.module.scss'
 import Arrow from "../../assets/arrow_left.svg?react"
-import Favourite from '../../assets/icon_favourite.svg?react'
-import Saved from '../../assets/icon_saved.svg?react'
+import { Favourite } from '../../components/Icons/Favourite'
+import { Saved } from '../../components/Icons/Saved'
+import { Stars } from '../../components/Stars/Starts'
+import { useParams } from "react-router"
+import { AppContext } from "../../App"
+import { useContext } from "react"
+
 
 
 export const WineDescription = () => {
+    const { wines } = useContext(AppContext)
+    const { id } = useParams()
+    const findWineObject = wines.find(el => el.id === Number(id))
+
     return (
         <div>
             <div className={styles.container}>
-                <Link to="/category"><Arrow /></Link>
+                <Link to={`/category?selectedCat=${findWineObject?.categories[0]}`}><Arrow /></Link>
                 <div className={styles.iconsCnt}>
-                    <div><Favourite style={{ width: 30, height: 25 }} /></div>
-                    <div><Saved style={{ width: 30, height: 25 }} /></div>
+                    <div><Favourite /></div>
+                    <div><Saved /></div>
                 </div>
+                <img className={styles.wineImage} src={findWineObject?.image}></img>
+            </div>
+            <div className={styles.descriptionCnt}>
+                <div className={styles.descriptionRow}>
+                    <div className={styles.descriptionCol}>
+                        <h2 className={styles.descriptionTitle}>{findWineObject?.name}</h2>
+                        <p className={styles.descriptionCategory}>{findWineObject?.categories.join(', ')}</p>
+                        <p className={styles.descriptionCategory}>{findWineObject?.country}</p>
+                    </div>
+                    <Stars rating={findWineObject?.rating} />
+                </div>
+                <div>{findWineObject?.description}</div>
             </div>
             <div><Navigation /></div>
         </div>

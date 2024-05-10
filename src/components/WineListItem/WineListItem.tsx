@@ -15,8 +15,8 @@ export const WineListItem = ({ name, image, rating }: WineListItemProps) => {
         <div className={styles.mainCnt}>
             <div className={styles.itemCnt}>
                 <div className={styles.iconsCnt}>
-                    <div><Favourite style={{ width: 15, height: 15 }} /></div>
-                    <div ><Saved style={{ width: 15, height: 15 }} /></div>
+                    <div><Favourite style={{ width: 15, height: 15, color: "#FAFAFA" }} /></div>
+                    <div ><Saved style={{ width: 15, height: 15, color: "#FAFAFA" }} /></div>
                 </div>
                 <div className={styles.titleCnt}>
                     <div className={styles.title}>{name}</div>

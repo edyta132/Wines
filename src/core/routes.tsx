@@ -39,4 +39,5 @@ export const routes = [
     { path: '/rose-sweet', element: <RoseSweet /> },
     { path: '/sparkling', element: <Sparkling /> },
     { path: '/wine-description', element: <WineDescription /> },
+    // { path: '/wine-description:id', element: <WineDescription /> },
 ] as const
