@@ -1,0 +1,43 @@
+.profilCnt {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 50px 40px;
+    background-color: $color-bg-purple;
+}
+
+.profilAvatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: $color-primary;
+}
+
+.profilName {
+    font-size: 24px;
+    font-weight: bold;
+    color: $color-primary;
+}
+
+.itemsCnt {
+    padding: 20px 30px;
+}
+
+.itemsList {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.itemsLink {
+    font-size: 16px;
+    font-weight: bold;
+    color: $color-text;
+}
+
+.wineListCnt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
