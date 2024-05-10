@@ -19,7 +19,7 @@ export const WineDescription = () => {
     return (
         <div>
             <div className={styles.container}>
-                <Link to="/category"><Arrow /></Link>
+                <Link to={`/category?selectedCat=${findWineObject?.categories[0]}`}><Arrow /></Link>
                 <div className={styles.iconsCnt}>
                     <div><Favourite /></div>
                     <div><Saved /></div>
