@@ -19,24 +19,31 @@ export const WineDescription = () => {
     return (
         <div>
             <div className={styles.container}>
-                <Link to={`/category?selectedCat=${findWineObject?.categories[0]}`}><Arrow /></Link>
-                <div className={styles.iconsCnt}>
-                    <div><Favourite /></div>
-                    <div><Saved /></div>
-                </div>
-                <img className={styles.wineImage} src={findWineObject?.image}></img>
-            </div>
-            <div className={styles.descriptionCnt}>
-                <div className={styles.descriptionRow}>
-                    <div className={styles.descriptionCol}>
-                        <h2 className={styles.descriptionTitle}>{findWineObject?.name}</h2>
-                        <p className={styles.descriptionCategory}>{findWineObject?.categories.join(', ')}</p>
-                        <p className={styles.descriptionCategory}>{findWineObject?.country}</p>
+                <div className={styles.iconsRow}>
+                    <div className={styles.iconsCol}>
+                        <Link to={`/${findWineObject?.categories.join('-')}`}><Arrow /></Link>
+                        <div className={styles.iconsCnt}>
+                            <div><Favourite /></div>
+                            <div><Saved /></div>
+                        </div>
                     </div>
-                    <Stars rating={findWineObject?.rating} />
+                    <div className={styles.imgCnt}>
+                        <img className={styles.wineImage} src={findWineObject?.image}></img>
+                    </div>
                 </div>
-                <div>{findWineObject?.description}</div>
+                <div className={styles.descriptionCnt}>
+                    <div className={styles.descriptionRow}>
+                        <div className={styles.descriptionCol}>
+                            <h2 className={styles.descriptionTitle}>{findWineObject?.name}</h2>
+                            <p className={styles.descriptionCategory}>{findWineObject?.categories.join(', ')}</p>
+                            <p className={styles.descriptionCategory}>{findWineObject?.country}</p>
+                        </div>
+                        <Stars rating={findWineObject?.rating ?? 0} />
+                    </div>
+                    <div>{findWineObject?.description}</div>
+                </div>
             </div>
+
             <div><Navigation /></div>
         </div>
     )
