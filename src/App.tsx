@@ -1,23 +1,24 @@
 import { Route, Routes } from 'react-router'
 import { routes } from './core/routes'
-import { useEffect, useState, createContext } from 'react'
+import { useEffect, useState, createContext, useId } from 'react'
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs, getDoc } from 'firebase/firestore';
 import { db } from './core/services/firebase';
-import { WineListItemType } from './pages/ListOfWine/types';
+import { UserData, WineListItemType } from './pages/ListOfWine/types';
 import { WineDescription } from './pages/WineDescription/WineDescription';
 
 type AppContextParams = {
   user: null | User,
-  wines: WineListItemType[]
+  wines: WineListItemType[],
+  userData: null | UserData
 }
-export const AppContext = createContext<AppContextParams>({ user: null, wines: [] })
+export const AppContext = createContext<AppContextParams>({ user: null, wines: [], userData: null })
+
 
 function App() {
   const [user, setUser] = useState<User | null>(null)
   const [wines, setWines] = useState<WineListItemType[]>([])
-
-
+  const [userData, setUserData] = useState<UserData | null>(null)
   useEffect(() => {
     const getWinesList = async () => {
       const winesCollectionRef = collection(db, "wines")
@@ -30,6 +31,16 @@ function App() {
       }
     }
 
+    const getUserData = async (uid: string) => {
+      const usersDataCollectionRef = doc(db, "users-data", uid)
+      try {
+        const data = (await getDoc(usersDataCollectionRef)).data() as UserData
+        setUserData(data)
+        //prosze bardzo tutaj masz dane :) 
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
@@ -41,13 +52,14 @@ function App() {
         // ...
 
         getWinesList()
+        getUserData(uid)
       } else {
         setUser(null)
       }
     });
   }, [])
   return (
-    <AppContext.Provider value={{ user, wines }}>
+    <AppContext.Provider value={{ user, wines, userData }}>
       <Routes>
         {routes.map((route, idx) => (
           <Route key={idx} path={route.path} element={route.element} />

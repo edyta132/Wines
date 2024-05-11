@@ -8,3 +8,8 @@ export type WineListItemType = {
     id: number;
     docId: string;
 }
+
+export type UserData = {
+    favourites: number[];
+    saved: number[]
+}

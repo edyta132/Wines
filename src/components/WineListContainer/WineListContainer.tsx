@@ -27,7 +27,7 @@ export const WineListContainer = ({ title, subtitle, winesList, color, taste }: 
         <div>
             <h1 className={styles.title}>{title}</h1>
             <h2 className={styles.subtitle}>{subtitle}</h2>
-            <ul>{filterList.map((item, id) => <Link className={styles.link} to={`/wine-description/${item.id}`} key={id}><li className={styles.list}><WineListItem name={item.name} categories={item.categories} image={item.image} rating={item.rating} /></li></Link>)}</ul>
+            <ul>{filterList.map((item, id) => <Link className={styles.link} to={`/wine-description/${item.id}`} key={id}><li className={styles.list}><WineListItem name={item.name} categories={item.categories} image={item.image} rating={item.rating} id={item.id} /></li></Link>)}</ul>
 
         </div>
     )
