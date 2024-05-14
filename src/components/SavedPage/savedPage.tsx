@@ -1,24 +1,20 @@
-import { Favourite } from '../Icons/Favourite'
-import { Stars } from '../Stars/Starts'
+import { useContext } from 'react'
 import styles from './SavedPage.module.scss'
+import { AppContext } from '../../App'
+import { SavedItems } from './SavedItems'
 
 export const SavedPage = () => {
+    const { userData, wines } = useContext(AppContext)
+
+    const savedWines = wines.filter(el => {
+        if (userData?.saved.includes(el.id)) {
+            return true
+        }
+        return false
+
+    })
+
     return (
-        <div className={styles.mainCnt}>
-            <div className={styles.itemCnt}>
-                <div className={styles.iconsCnt}>
-                    <div><Favourite style={{ width: 8, height: 8, color: "#FAFAFA" }} /></div>
-                </div>
-                <div className={styles.titleCnt}>
-                    <div className={styles.title}>Title</div>
-                    <div><Stars /></div>
-                </div>
-                <div className={styles.itemPhotoCnt}>
-                    <div className={styles.itemPhoto}>
-                        <img src="https://images.vivino.com/thumbs/CdTojlE9Tn-Ty3QR0k-DSg_pb_x300.png" width={30} height={120}></img>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ul className={styles.wineListCnt}>{savedWines.map((el, idx) => <li className={styles.wineList} key={idx}><SavedItems name={el.name} subtitle={el.categories[0]} category={el.categories[1]} img={el.image} rating={el.rating} /></li>)}</ul>
     )
 }

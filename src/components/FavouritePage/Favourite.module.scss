@@ -1,10 +1,16 @@
 .container {
-    background-color: $color-bg-ligth;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px 25px;
-    border-radius: 30px;
+    padding: 15px 25px;
+}
+
+.wineList {
+    max-width: 140px;
+    background-color: $color-bg-ligth;
+
+    border-radius: 20px;
 }
 
 .wineImgCnt {
@@ -19,6 +25,32 @@
 
 .wineImage {}
 
-.wineTitle {}
+.wineTitle {
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 5px;
+    line-height: 16px;
+}
 
-.wineCategory {}
+.wineCategory {
+    font-size: 14px;
+    padding-bottom: 3px;
+
+}
+
+.wineListCnt {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: auto auto;
+
+}
+
+.textCnt {
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    list-style: none;
+    color: $color-text;
+}

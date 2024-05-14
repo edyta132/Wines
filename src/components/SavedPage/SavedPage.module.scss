@@ -27,12 +27,14 @@
 .title {
     font-size: 14px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     line-height: 1.25;
 }
 
 .subtitle {
-    font-size: 12px;
+    font-size: 14px;
+    padding-bottom: 10px;
+
 }
 
 .itemPhotoCnt {
@@ -45,4 +47,12 @@
     position: absolute;
     right: 0;
     bottom: 0;
+}
+
+.wineListCnt {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 30px;
 }
