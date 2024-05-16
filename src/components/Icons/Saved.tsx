@@ -1,15 +1,19 @@
 import style from './Icons.module.scss'
-import { useState } from 'react'
+import { useContext } from 'react'
 import Save from '../../assets/icon_saved.svg?react'
+import { AppContext } from '../../App'
 
 
-export const Saved = () => {
-    const [color, setColor] = useState(true)
+export const Saved = ({ id }) => {
+    const { userData, modifyUserDataSaved } = useContext(AppContext)
 
-    const toggleColor = () => {
-        setColor(!color)
+    const isChecked = userData?.saved.includes(id)
+
+    const handleModifyData = () => {
+        modifyUserDataSaved(id)
     }
     return (
-        <div><Save className={style.icon} onClick={toggleColor} style={{ color: color ? "#FFFFFF" : '#A68AEE' }} /></div>
+        <div><Save className={style.icon} onClick={handleModifyData} style={{ color: isChecked ? '#A68AEE' : "#FFFFFF" }} /></div>
     )
+
 }

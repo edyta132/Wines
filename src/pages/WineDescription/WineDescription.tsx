@@ -23,8 +23,8 @@ export const WineDescription = () => {
                     <div className={styles.iconsCol}>
                         <Link to={`/${findWineObject?.categories.join('-')}`}><Arrow /></Link>
                         <div className={styles.iconsCnt}>
-                            <div><Favourite /></div>
-                            <div><Saved /></div>
+                            <div><Favourite id={findWineObject?.id} /></div>
+                            <div><Saved id={findWineObject?.id} /></div>
                         </div>
                     </div>
                     <div className={styles.imgCnt}>

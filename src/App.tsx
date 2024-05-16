@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router'
 import { routes } from './core/routes'
 import { useEffect, useState, createContext, useId } from 'react'
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, doc, getDocs, getDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, getDoc, setDoc } from 'firebase/firestore';
 import { db } from './core/services/firebase';
 import { UserData, WineListItemType } from './pages/ListOfWine/types';
 import { WineDescription } from './pages/WineDescription/WineDescription';
@@ -10,15 +10,66 @@ import { WineDescription } from './pages/WineDescription/WineDescription';
 type AppContextParams = {
   user: null | User,
   wines: WineListItemType[],
-  userData: null | UserData
+  userData: UserData,
+  modifyUserDataFavourites: (arg: number) => void,
+  modifyUserDataSaved: (arg: number) => void
 }
-export const AppContext = createContext<AppContextParams>({ user: null, wines: [], userData: null })
+
+const initialUserData: UserData = { favourites: [], saved: [] }
+
+export const AppContext = createContext<AppContextParams>({ user: null, wines: [], userData: initialUserData, modifyUserDataFavourites: () => { }, modifyUserDataSaved: () => { } })
 
 
 function App() {
   const [user, setUser] = useState<User | null>(null)
   const [wines, setWines] = useState<WineListItemType[]>([])
-  const [userData, setUserData] = useState<UserData | null>(null)
+  const [userData, setUserData] = useState<UserData>(initialUserData)
+
+  console.log(userData)
+
+  const modifyUserDataFavourites = (id: number) => {
+    if (!userData || !user) {
+      return
+    }
+    const usersDataCollectionRef = doc(db, "users-data", user.uid)
+
+    if (userData.favourites.includes(id)) {
+      const removeEl = userData.favourites.filter(el => {
+        return el !== id
+      });
+      const newRemovedUserData = { ...userData, favourites: removeEl }
+      setUserData(newRemovedUserData)
+      setDoc(usersDataCollectionRef, newRemovedUserData)
+    } else {
+      const newUserData: UserData = { ...userData, favourites: [...userData!.favourites, id] }
+      setUserData(newUserData)
+      setDoc(usersDataCollectionRef, newUserData)
+    }
+  }
+
+  const modifyUserDataSaved = (id: number) => {
+    if (!userData || !user) {
+      return
+    }
+
+    const usersDataCollectionRef = doc(db, "users-data", user.uid)
+
+    if (userData.saved.includes(id)) {
+      const removeEl = userData.saved.filter(el => {
+        return el !== id
+      });
+      const newRemovedUserData = { ...userData, saved: removeEl }
+      setUserData(newRemovedUserData)
+      setDoc(usersDataCollectionRef, newRemovedUserData)
+    } else {
+      const newUserData: UserData = { ...userData, saved: [...userData.saved, id] }
+      setUserData(newUserData)
+      setDoc(usersDataCollectionRef, newUserData)
+    }
+  }
+
+
+
   useEffect(() => {
     const getWinesList = async () => {
       const winesCollectionRef = collection(db, "wines")
@@ -35,8 +86,9 @@ function App() {
       const usersDataCollectionRef = doc(db, "users-data", uid)
       try {
         const data = (await getDoc(usersDataCollectionRef)).data() as UserData
-        setUserData(data)
-        //prosze bardzo tutaj masz dane :) 
+        if (data) {
+          setUserData(data)
+        }
       } catch (err) {
         console.log(err)
       }
@@ -59,7 +111,7 @@ function App() {
     });
   }, [])
   return (
-    <AppContext.Provider value={{ user, wines, userData }}>
+    <AppContext.Provider value={{ user, wines, userData, modifyUserDataFavourites, modifyUserDataSaved }}>
       <Routes>
         {routes.map((route, idx) => (
           <Route key={idx} path={route.path} element={route.element} />

@@ -11,7 +11,6 @@ import { Search } from "../../components/Search/Search"
 
 export const MainPage = () => {
     const { user } = useContext(AppContext)
-    console.log(user?.displayName)
     return (
         <div className={styles.mainPage}>
             <div className={styles.mainContainer}>

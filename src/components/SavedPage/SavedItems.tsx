@@ -1,8 +1,15 @@
-import { Favourite } from '../Icons/Favourite'
 import { Stars } from '../Stars/Starts'
 import styles from './SavedPage.module.scss'
 
-export const SavedItems = ({ name, subtitle, category, img, rating }) => {
+type SavedItemsProps = {
+    name: string;
+    subtitle: string;
+    category: string;
+    img: string;
+    rating: number
+}
+
+export const SavedItems = ({ name, subtitle, category, img, rating }: SavedItemsProps) => {
     return (
         <div className={styles.mainCnt}>
             <div className={styles.itemCnt}>
