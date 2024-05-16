@@ -11,8 +11,6 @@ type FormFields = {
     password: string;
 }
 
-
-
 export const Login = () => {
     const {
         register,

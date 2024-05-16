@@ -17,6 +17,8 @@ import { Nav } from "../../components/Burger/Nav"
 export const ListOfWine = () => {
     const { wines } = useContext(AppContext)
 
+
+    console.log(wines)
     return (
         <div>
             <div className={styles.container}>
