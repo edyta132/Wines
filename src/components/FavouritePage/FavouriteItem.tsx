@@ -1,6 +1,13 @@
 import styles from './Favourite.module.scss'
 
-export const FavouriteItem = ({ name, subtitle, category, img }) => {
+type FavouriteItemsProps = {
+    name: string;
+    subtitle: string;
+    category: string;
+    img: string;
+    rating: number
+}
+export const FavouriteItem = ({ name, subtitle, category, img }: FavouriteItemsProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.wineImgCnt}>

@@ -7,33 +7,15 @@ import { SavedPage } from '../../components/SavedPage/savedPage'
 import { MyWines } from '../../components/MyWines/MyWines'
 import { getAuth, signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router'
-import { Link, useSearchParams } from 'react-router-dom'
-
 
 
 export const Profil = () => {
     const { user } = useContext(AppContext)
-    // const [activeTab, setActiveTab] = useState(false)
     const [toggle, setToggle] = useState(1)
     const navigate = useNavigate();
-    // const [queryParams] = useSearchParams()
-    // const selectedCategory = queryParams.get('tab')
 
-    // console.log(queryParams.get('tab'))
-    // const getCategory = () => {
-    //     switch (selectedCategory) {
-    //         case 'favourite':
-    //             return '/favourite'
-    //         case 'saved':
-    //             return '/saved'
-    //         case 'my wines':
-    //             return '/my-wines'
-    //         default:
-    //             return '';
-    //     }
-    // }
 
-    const updateToggle = (id) => {
+    const updateToggle = (id: number) => {
         setToggle(id)
     }
 

@@ -1,6 +1,4 @@
-import { useContext } from "react"
 import styles from "./MainPage.module.scss"
-import { AppContext } from "../../App"
 import { Navigation } from "../../components/Navigation/Navigation"
 import Red from '../../assets/red.png'
 import White from '../../assets/white.png'
@@ -10,7 +8,6 @@ import { Link } from "react-router-dom"
 import { Search } from "../../components/Search/Search"
 
 export const MainPage = () => {
-    const { user } = useContext(AppContext)
     return (
         <div className={styles.mainPage}>
             <div className={styles.mainContainer}>

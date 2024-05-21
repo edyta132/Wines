@@ -1,6 +1,4 @@
-import { useContext } from "react"
 import styles from "./MainPage.module.scss"
-import { AppContext } from "../../App"
 import { Navigation } from "../../components/Navigation/Navigation"
 import Dry from '../../assets/dry.png'
 import SemiDry from '../../assets/semi-dry.png'
@@ -13,12 +11,10 @@ import Arrow from "../../assets/arrow_left.svg?react"
 
 
 export const Category = () => {
-    const { user } = useContext(AppContext)
     const [queryParams] = useSearchParams()
     const selectedCategory = queryParams.get('selectedCat')
 
 
-    //Function link
     const getDryLink = () => {
         switch (selectedCategory) {
             case 'red':

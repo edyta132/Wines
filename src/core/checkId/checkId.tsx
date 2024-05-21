@@ -7,12 +7,7 @@ export const CheckId = () => {
     const { wines } = useContext(AppContext)
 
     const { id } = useParams()
-    console.log(wines)
-    console.log(typeof id)
-
     const findWineObject = wines.find(el => el.id === Number(id))
-
-    console.log(findWineObject)
     return (
         <div>
             <div>{findWineObject?.categories}</div>

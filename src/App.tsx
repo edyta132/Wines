@@ -25,12 +25,11 @@ function App() {
   const [wines, setWines] = useState<WineListItemType[]>([])
   const [userData, setUserData] = useState<UserData>(initialUserData)
 
-  console.log(userData)
-
   const modifyUserDataFavourites = (id: number) => {
     if (!userData || !user) {
       return
     }
+
     const usersDataCollectionRef = doc(db, "users-data", user.uid)
 
     if (userData.favourites.includes(id)) {
@@ -97,11 +96,9 @@ function App() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
+
         const uid = user.uid;
         setUser(user)
-        // ...
 
         getWinesList()
         getUserData(uid)

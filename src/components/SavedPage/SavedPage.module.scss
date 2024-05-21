@@ -56,3 +56,9 @@
     flex-wrap: nowrap;
     gap: 40px;
 }
+
+.link {
+    text-decoration: none;
+    list-style: none;
+    color: $color-text;
+}
